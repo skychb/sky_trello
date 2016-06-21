@@ -30,12 +30,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
-}
-
-
-eclipse {
-	classpath {
-		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-	}
+	compile("org.springframework.boot:spring-boot-devtools")
+	compile("org.projectlombok:lombok:1.16.8")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.thymeleaf:thymeleaf-spring4:3.0.0.RELEASE")
+    compile("org.thymeleaf:thymeleaf:3.0.0.RELEASE")
+	compile("com.h2database:h2")
+	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
 }
