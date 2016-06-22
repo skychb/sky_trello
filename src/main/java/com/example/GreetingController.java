@@ -7,10 +7,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GreetingController {
-	
-	@RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "index";
-    }
+
+	@RequestMapping("")
+	public String moveHome() {
+		return "index";
+	}
+
+	@RequestMapping("/signUp")
+	public String signUp() {
+		return "signUp";
+	}
+
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@RequestMapping("/projectMain")
+	public String projectMain() {
+		return "projectMain";
+	}
+
+	@RequestMapping("/board")
+	public String board() {
+		return "board";
+	}
+
 }
