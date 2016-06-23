@@ -1,8 +1,8 @@
-package com.example;
+package trello.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.Card;
+import trello.domain.Card;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
 
