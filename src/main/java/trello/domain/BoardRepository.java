@@ -1,5 +1,5 @@
 package trello.domain;
 
-public class BoardRepository {
+public interface BoardRepository {
 
 }

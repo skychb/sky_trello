@@ -1,5 +1,7 @@
 package trello.domain;
 
-public class CommentRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CommentRepository extends CrudRepository<Card, Long> {
 
 }
