@@ -33,6 +33,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-devtools")
 	compile("org.projectlombok:lombok:1.16.8")
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework:spring-test:4.2.6.RELEASE")
 	compile("org.thymeleaf:thymeleaf-spring4:3.0.0.RELEASE")
     compile("org.thymeleaf:thymeleaf:3.0.0.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
@@ -41,7 +42,6 @@ dependencies {
 	compile("io.springfox:springfox-swagger2:2.4.0")
 	compile("io.springfox:springfox-swagger-ui:2.4.0")
 	compile("org.apache.maven.plugins:maven-failsafe-plugin:2.13")
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
