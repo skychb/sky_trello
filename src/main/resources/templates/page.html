@@ -2,8 +2,8 @@
     <head>
       <meta charset="utf-8">
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <link type="text/css" rel="stylesheet" href="css/page.css"  media="screen,projection"/>    
+      <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="/css/page.css"  media="screen,projection"/>
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     </head>
 
@@ -25,14 +25,14 @@
 
 
        <div id="board_info">
-          <div class="project_name">JWP's First Project </div>
+          <div class="project_name" th:text="${board.boardName}"> </div>
        </div>
 
        <div id="board_canvas" class="list_sortable">
-          <div class="list_wrapper">
+          <div class="list_wrapper" th:each="lists:${list}">
             <div class="list_content z-depth-1">
                 <div class="list_header">
-                  <textarea class="list_header_name" value="First Todo">First Todo</textarea>
+                  <textarea class="list_header_name" th:text="${lists.listName}">First Todo</textarea>
                 </div>
 
                 <div class="list_cards">
@@ -46,8 +46,8 @@
                     </div>
                     <a class="add_card" href="#">Add a Card...</a>
                 </div>
-             
-            </div>  
+
+            </div>
           </div>
 
           <div class="add_list not_sortable" >
@@ -73,7 +73,7 @@
            <p class="card_title_in_modal">{{card_title}}</p>
 
             <div class="list_name_wrapper">
-                <span class="in_list">in list</span>
+                <span class="in_list" >in list</span>
                 <span class="list_name">{{list_name}}</span>
             </div>
 
@@ -85,7 +85,7 @@
 
             <p>Activity</p>
             <div class="comments">
-               
+
             </div>
     </div>
 
@@ -117,26 +117,26 @@
 
                     </form>
                 </div>
-  
+
               <div class="modal_sidebar_btn z-depth-1 file_attachment">Attachment</div>
 
                   <div class="modal_for_attachment z-depth-1">
                         <div class="attachment_btn_header">Attach</div>
-                        <input type="file" id="fileUpload" name="files[]" /> 
+                        <input type="file" id="fileUpload" name="files[]" />
                         <div class="attach_from_computer">Computer</div>
                         <div class="attach_with_link">Attach a link</div>
                         <input type="text" class="link_for_attachment" placeholder="Paste any link here..." />
                         <div class="link_submit z-depth-1">Attach</div>
                   </div>
-              
+
       </div>
-    
+
   </div>
       <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-      <script src="lib/jquery.fileupload.js"></script>
-      <script src="lib/handlebars-v4.0.5.js"></script>
-      <script type="text/javascript" src="lib/materialize.min.js"></script>
-      <script type="text/javascript" src="js/page.js"></script>
+      <script src="/lib/jquery.fileupload.js"></script>
+      <script src="/lib/handlebars-v4.0.5.js"></script>
+      <script type="text/javascript" src="/lib/materialize.min.js"></script>
+      <script type="text/javascript" src="/js/page.js"></script>
     </body>
   </html>

@@ -1,5 +1,7 @@
 package trello.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -15,7 +17,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "card")
-public class Card {
+public class Card implements Serializable{
 	private static Card card = null;
 	
 	@Id

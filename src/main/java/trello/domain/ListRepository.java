@@ -1,7 +1,8 @@
 package trello.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface ListRepository  extends CrudRepository<List, Long>{
-
+public interface ListRepository  extends JpaRepository<List, Long>{
+	Iterable<List> findByBoardId(long boardId);
 }

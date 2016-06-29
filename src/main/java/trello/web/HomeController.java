@@ -2,6 +2,7 @@ package trello.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -10,7 +11,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping("/signUp")
+	@RequestMapping(value="/signUp", method={RequestMethod.GET, RequestMethod.POST})
 	public String signUp() {
 		return "signUp";
 	}
@@ -20,9 +21,9 @@ public class HomeController {
 		return "login";
 	}
 
-	@RequestMapping("/projectMain")
-	public String projectMain() {
-		return "projectMain";
+	@RequestMapping("/page")
+	public String page() {
+		return "page";
 	}
 
 }

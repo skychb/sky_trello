@@ -1,5 +1,6 @@
 package trello.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "comment")
-public class Comment {
+public class Comment implements Serializable{
 	private static Comment comment = null;
 	
 	@Id

@@ -18,19 +18,19 @@ import trello.SkyTrelloApplication;
 
 public class MySchemaExport {
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(SkyTrelloApplication.class);
-		LocalContainerEntityManagerFactoryBean lcemfb = acac.getBean(LocalContainerEntityManagerFactoryBean.class);
-		final Properties prop = new Properties();
-		prop.put(AvailableSettings.DIALECT, "org.hibernate.dialect.H2Dialect");
-		final PersistenceUnitInfo info = lcemfb.getPersistenceUnitInfo();
-		final PersistenceUnitInfoDescriptor puid = new PersistenceUnitInfoDescriptor(info);
-		final EntityManagerFactoryBuilderImpl emfbi = new EntityManagerFactoryBuilderImpl(puid, prop);
-		final ServiceRegistry serviceRegistry = emfbi.buildServiceRegistry();
-		final Configuration configuration = emfbi.buildHibernateConfiguration(serviceRegistry);
-		final SchemaExport schemaExport = new SchemaExport(serviceRegistry, configuration);
-		schemaExport.setFormat(true);
-		schemaExport.setDelimiter(";");
-		schemaExport.execute(true, false, false, true);
-		acac.close();
+//		AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(SkyTrelloApplication.class);
+//		LocalContainerEntityManagerFactoryBean lcemfb = acac.getBean(LocalContainerEntityManagerFactoryBean.class);
+//		final Properties prop = new Properties();
+//		prop.put(AvailableSettings.DIALECT, "org.hibernate.dialect.H2Dialect");
+//		final PersistenceUnitInfo info = lcemfb.getPersistenceUnitInfo();
+//		final PersistenceUnitInfoDescriptor puid = new PersistenceUnitInfoDescriptor(info);
+//		final EntityManagerFactoryBuilderImpl emfbi = new EntityManagerFactoryBuilderImpl(puid, prop);
+//		final ServiceRegistry serviceRegistry = emfbi.buildServiceRegistry();
+//		final Configuration configuration = emfbi.buildHibernateConfiguration(serviceRegistry);
+//		final SchemaExport schemaExport = new SchemaExport(serviceRegistry, configuration);
+//		schemaExport.setFormat(true);
+//		schemaExport.setDelimiter(";");
+//		schemaExport.execute(true, false, false, true);
+//		acac.close();
 	}
 }
