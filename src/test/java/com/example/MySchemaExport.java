@@ -1,4 +1,4 @@
-package trello.test;
+package com.example;
 
 import java.util.Properties;
 import javax.persistence.spi.PersistenceUnitInfo;
