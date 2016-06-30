@@ -2,9 +2,9 @@
 <head>
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
 	media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="css/projectMain.css"
+<link type="text/css" rel="stylesheet" href="/css/projectMain.css"
 	media="screen,projection" />
 </head>
 
@@ -13,10 +13,12 @@
 
 	<div id="my_board">My Boards</div>
 	<ul id="boards_list">
+		<ul th:each="boards:${board}">
 		<!-- th:href li태그 내에선 안되는거 해결해야 함. -->
-		<li class="board project_1 waves-effect waves-light btn"
-			th:each="boards:${board}" th:text="${boards.boardName}" th:href="@{'/project/'} +${boards.id}"></li>
 
+		<li class="board project_1 waves-effect waves-light btn"
+			>	<a th:text="${boards.boardName}" th:href="@{'/project/'} +${boards.id}"><a/></li>
+		</ul>
 
 		<div class="add_project not_sortable">
 			<a
@@ -30,15 +32,15 @@
 						class="validate"> <label for="list_name">Add a
 						Project...</label></br> <a
 						class="waves-effect waves-light btn save blue-grey lighten-5">save</a>
-					<input type="submit" value="OK" /> <a
+					<input class ="waves-effect waves-light btn save blue-grey lighten-5" type="submit" value="OK" /> <a
 						class="waves-effect waves-light btn cancel blue-grey lighten-5">cancel</a>
 				</div>
 			</form>
 		</div>
 	</ul>
 
-	<script type="text/javascript" src="lib/jquery-2.2.0.min.js"></script>
-	<script type="text/javascript" src="lib/materialize.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="/lib/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/lib/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/index.js"></script>
 </body>
 </html>

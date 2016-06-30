@@ -13,6 +13,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "board")
+@Data
 public class Board implements Serializable{
 
 	private static Board board = null;
@@ -30,30 +31,6 @@ public class Board implements Serializable{
 
 	public Board() {
 	};
-
-	public static Board getBoard() {
-		return board;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getBoardName() {
-		return boardName;
-	}
-
-	public static void setBoard(Board board) {
-		Board.board = board;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public void setBoardName(String boardName) {
-		this.boardName = boardName;
-	}
 
 	@Override
 	public String toString() {
