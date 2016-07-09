@@ -23,27 +23,27 @@ public class Comment implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long commentId;
+	
 	private Timestamp timeStamp;
+	
+	@Column(name="userName", length=100)
+	private String userName;
+	
 	@Column(name = "content", length=1000, nullable=false)
 	private String content;
+	
 	@ManyToOne
 	@JoinColumn(foreignKey=@ForeignKey(name="fk_comment_parent_id"))
 	private Card card;
 	
-	public Comment(Timestamp timeStamp, String content){
+	public Comment(Timestamp timeStamp, String userName, Card card, String content){
 		this.timeStamp = timeStamp;
+		this.userName = userName;
 		this.content = content;
-	}
-
-	public static Comment getComment() {
-		return comment;
-	}
-
-	public static void setComment(Comment comment) {
-		Comment.comment = comment;
+		this.card = card;
 	}
 	
-	
+	public Comment(){};
 	
 }

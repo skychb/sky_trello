@@ -9,7 +9,6 @@ import org.springframework.boot.test.IntegrationTest;
 
 import trello.SkyTrelloApplication;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SkyTrelloApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")

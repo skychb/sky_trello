@@ -13,6 +13,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot' 
+apply plugin: 'application'
+
+mainClassName = "trello.SkyTrelloApplication"
 
 jar {
 	baseName = 'demo'
@@ -45,4 +48,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-}
+	compile('org.springframework.boot:spring-boot-starter-security')
+compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.0.RELEASE')
+	}
+

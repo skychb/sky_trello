@@ -14,10 +14,10 @@
 	<div id="my_board">My Boards</div>
 	<ul id="boards_list">
 		<ul th:each="boards:${board}">
-		<!-- th:href li태그 내에선 안되는거 해결해야 함. -->
+			<!-- th:href li태그 내에선 안되는거 해결해야 함. -->
 
-		<li class="board project_1 waves-effect waves-light btn"
-			>	<a th:text="${boards.boardName}" th:href="@{'/project/'} +${boards.id}"><a/></li>
+			<li class="board project_1 waves-effect waves-light btn"><a
+				th:text="${boards.boardName}" th:href="@{'/project/'} +${boards.id}"><a /></li>
 		</ul>
 
 		<div class="add_project not_sortable">
@@ -25,17 +25,26 @@
 				class="btn-floating btn-large waves-effect waves-light red add_project_btn">
 				<i class="material-icons">add</i>
 			</a>
-			<form method="post" action="/project"
-				class="add_project_form">
+			<form class="add_project_form">
+                    <div class="input-field col s12">
+                        <input id="add_project" type="text" class="validate">
+                          <label for="list_name">Add a Project...</label></br>
+                           <a class="waves-effect waves-light btn save blue-grey lighten-5">save</a>
+                          <a class="waves-effect waves-light btn cancel blue-grey lighten-5">cancel</a>
+                    </div>
+                  </form>
+			<!-- <form class="add_project_form">
 				<div class="input-field col s12">
 					<input name="board_name" id="add_project" type="text"
-						class="validate"> <label for="list_name">Add a
+						class="validate"> <label for="board_name">Add a
 						Project...</label></br> <a
 						class="waves-effect waves-light btn save blue-grey lighten-5">save</a>
-					<input class ="waves-effect waves-light btn save blue-grey lighten-5" type="submit" value="OK" /> <a
+					<input
+						class="waves-effect waves-light btn save blue-grey lighten-5"
+						type="submit" value="OK" /> <a
 						class="waves-effect waves-light btn cancel blue-grey lighten-5">cancel</a>
 				</div>
-			</form>
+			</form> -->
 		</div>
 	</ul>
 

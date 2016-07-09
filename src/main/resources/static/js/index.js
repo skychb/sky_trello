@@ -2,7 +2,7 @@ var TODO = (function (window){
 
 	 'use strict';
 
-	 var board_btn = " <li class='board waves-effect waves-light btn'>" +		
+	 var board_btn = " <li class='board waves-effect waves-light btn'>" +
 	 						"{{input-value}}" +
 	 					"</li>"
 
@@ -23,13 +23,35 @@ var TODO = (function (window){
 	}
 
 	function add_project(){
-
 		var project_name = $("#add_project").val();
-		var str = board_btn.replace(/\{\{input-value\}\}/gi,project_name);
-		$(".add_project").before(str);
-		$("#add_project").val("");
-		$(".add_project_form").css('display','none');
-		$(".btn-floating").css('display','block');
+		var data = JSON.stringify({"boardName":project_name});
+		console.log(project_name);
+		$.ajax({
+		      type: "POST",
+		      contentType: "application/json",
+		      url: '/project',
+		      data: data,
+		      dataType: "json",
+		      statusCode: {
+		    	  201: function(result) {
+		    		  	var html = "<a href='/b/" + result.id + "'>" + result.boardName + "</>";
+				  	    var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
+						$(".add_project").before(name);
+						$("#add_project").val("");
+						$(".add_project_form").css('display','none');
+						$(".btn-floating").css('display','block');
+		    	  }}
+		});
+		// $.post("http://localhost:8080/project", function(result) {
+		//   	var html = "<a href='/project/" + result.id + "'>" + result.name + "</>";
+  	//     var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
+		// 		$(".add_project").before(name);
+		// 		$("#add_project").val("");
+		// 		$(".add_project_form").css('display','none');
+		// 		$(".btn-floating").css('display','block');
+		// }, "json");
+		// var project_name = $("#add_project").val();
+		// var str = board_btn.replace(/\{\{input-value\}\}/gi,project_name);
 	}
 
 	function create_new_project(){
@@ -48,7 +70,7 @@ var TODO = (function (window){
 
 		$("#boards_list").prepend(board_btn);
 	}
-	
+
 
 	return {
 		"init" : init

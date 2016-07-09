@@ -20,27 +20,28 @@
                 <div class="underline"></div><span>or</span>
                 <div class="underline"></div>
           </div>
-
+	<form action="/login" method="POST">
           <div class="row">
               <div class="input-field col s12">
-                  <input id="email" type="email" class="validate">
-                  <label for="email">Email</label>
+                  <input name="userId" class="validate">
+                  <label for="userId">Id</label>
                 </div>
               </div>
 
          <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
+                <input name="userPassword" type="password" class="validate">
+                <label for="userPassword">Password</label>
               </div>
          </div>
             <div class="btn_area">
-               <div class="login_btn z-depth-1 blue-grey lighten-5">Login</div>
+              <input class="waves-effect waves-light btn save blue-grey lighten-5"
+					type="submit" value="OK" />
                <div class="signUp_btn z-depth-1 blue-grey lighten-5">SignUp</div>
             </div>
 
          </div>
-
+	</form>
       <script type="text/javascript" src="lib/jquery-2.2.0.min.js"></script>
       <script src="lib/handlebars-v4.0.5.js"></script>
       <script type="text/javascript" src="lib/materialize.min.js"></script>

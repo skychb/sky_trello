@@ -22,40 +22,24 @@ public class Card implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long cardId;
 	@Column(name = "cardName", length=70, nullable=false)
 	private String cardName;
-	@Column(name="description", length=100, nullable=true)
+	@Column(name="description", length=5000, nullable=true)
 	private String description;
+	
 	@ManyToOne
 	@JoinColumn(foreignKey=@ForeignKey(name="fk_card_parent_id"))
 	private List list;
 	
 	
-	public Card(String cardName, String description){
+	public Card(String cardName, String description, List list){
 		this.cardName = cardName;
 		this.description = description;
+		this.list = list;
+		list.addCard(this);
 	}
 	
-	public static Card getCard(){
-		return card;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getCardName() {
-		return cardName;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	@Override
-	public String toString() {
-		return "Card [id=" + id + ", cardName=" + cardName + ", description=" + description + "]";
-	}
+	public Card(){};
 	
 }

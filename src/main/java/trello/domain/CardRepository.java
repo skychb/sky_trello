@@ -1,10 +1,9 @@
 package trello.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
 
-import trello.domain.Card;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CardRepository extends CrudRepository<Card, Long> {
-	Iterable<Card> findByListId(long listId);
+public interface CardRepository extends JpaRepository<Card, Long> {
 	
 }

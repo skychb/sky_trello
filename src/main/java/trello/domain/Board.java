@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -25,6 +28,10 @@ public class Board implements Serializable{
 	@Column(name = "boardName", length = 50, nullable = false)
 	private String boardName;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "board")
+	private java.util.List<List> lists;
+	
 	public Board(String boardName) {
 		this.boardName = boardName;
 	}
@@ -32,9 +39,5 @@ public class Board implements Serializable{
 	public Board() {
 	};
 
-	@Override
-	public String toString() {
-		return "Board [id=" + id + ", boardName=" + boardName + "]";
-	}
 
 }
