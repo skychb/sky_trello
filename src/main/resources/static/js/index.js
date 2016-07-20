@@ -25,31 +25,31 @@ var TODO = (function (window){
 	function add_project(){
 		var project_name = $("#add_project").val();
 		var data = JSON.stringify({"boardName":project_name});
-		console.log(project_name);
 		$.ajax({
 		      type: "POST",
+//		      contentType을 입력하지 않으면 415 에러가 뜸. (Unsupported Media Type) MIME을 중시..
 		      contentType: "application/json",
 		      url: '/project',
 		      data: data,
-		      dataType: "json",
-		      statusCode: {
-		    	  201: function(result) {
-		    		  	var html = "<a href='/b/" + result.id + "'>" + result.boardName + "</>";
-				  	    var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
-						$(".add_project").before(name);
-						$("#add_project").val("");
-						$(".add_project_form").css('display','none');
-						$(".btn-floating").css('display','block');
-		    	  }}
+		      success: function(result){
+    		  	var html = "<a href='/project/" + result.id + "'>" + result.boardName + "</>";
+		  	    var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
+				$(".add_project").before(name);
+				$("#add_project").val("");
+				$(".add_project_form").css('display','none');
+				$(".btn-floating").css('display','block');
+		    	  }
 		});
-		// $.post("http://localhost:8080/project", function(result) {
-		//   	var html = "<a href='/project/" + result.id + "'>" + result.name + "</>";
-  	//     var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
-		// 		$(".add_project").before(name);
-		// 		$("#add_project").val("");
-		// 		$(".add_project_form").css('display','none');
-		// 		$(".btn-floating").css('display','block');
-		// }, "json");
+		
+//		 $.post("/project", {"boardName" : project_name})
+//		 .done(function(data) {
+//		   		var html = "<a href='/project/" + result.id + "'>" + result.boardName + "</>";
+//		   		var name = board_btn.replace(/\{\{input-value\}\}/gi,html);
+//		 		$(".add_project").before(name);
+//		 		$("#add_project").val("");
+//		 		$(".add_project_form").css('display','none');
+//		 		$(".btn-floating").css('display','block');
+//		 }, "json"); 얘는 applicationType을 지원하지 않아서 사용할 수 없음.
 		// var project_name = $("#add_project").val();
 		// var str = board_btn.replace(/\{\{input-value\}\}/gi,project_name);
 	}

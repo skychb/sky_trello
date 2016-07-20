@@ -43,7 +43,7 @@ public class UserController {
 	public String login(@RequestParam String userId, @RequestParam String userPassword, HttpServletRequest request){
 		User user = userRepository.findByUserId(userId);
 		
-		System.out.println(user);
+//		System.out.println(user);
 		request.getSession().setAttribute("user", user);
 		return "redirect:/project";
 	}

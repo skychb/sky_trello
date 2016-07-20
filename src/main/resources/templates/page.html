@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="list_cards">
-									<div class="list_card_info" th:each="card:${list.cards}">
+									<div class="list_card" th:each="card:${list.cards}">
 										<div class="list_card_detail">
 							<a class="list_card_title modal-trigger modalLink" dir="auto" href="#modalLayer" th:text="${card.cardName}">Card Title</a>
 						</div>

@@ -11,11 +11,29 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: "war"
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot' 
 apply plugin: 'application'
 
 mainClassName = "trello.SkyTrelloApplication"
+
+war {
+    exclude 'WEB-INF/lib/**'
+    exclude 'WEB-INF/classes/**'
+
+    // copy properties file in classes so that
+    // they may be loaded from classpath
+    from('resources')    {
+        include '*.properties'
+        into 'WEB-INF/classes/'
+    }
+
+    //webInf { from 'src/additionalWebInf' } // adds a file-set to the WEB-INF dir.
+    //classpath fileTree('additionalLibs') // adds a file-set to the WEB-INF/lib dir.
+    //webXml = file('src/main/webapp/WEB-INF/web.xml') // copies a file to WEB-INF/web.xml
+}
+
 
 jar {
 	baseName = 'demo'
