@@ -13,6 +13,6 @@ public class SkyTrelloApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SkyTrelloApplication.class, args);
-		
+
 	}
 }
