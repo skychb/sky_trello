@@ -1,4 +1,4 @@
-package trello.domain;
+package trello.domain.trello;
 
 import java.io.Serializable;
 import java.util.ArrayList;

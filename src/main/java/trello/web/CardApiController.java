@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import trello.domain.BoardRepository;
-import trello.domain.Card;
-import trello.domain.CardRepository;
-import trello.domain.List;
-import trello.domain.ListRepository;
+import trello.domain.trello.BoardRepository;
+import trello.domain.trello.Card;
+import trello.domain.trello.CardRepository;
+import trello.domain.trello.List;
+import trello.domain.trello.ListRepository;
 
 @RestController
 @RequestMapping("/api/card")
@@ -31,5 +31,4 @@ public class CardApiController {
 		cardRepository.save(cardNew);
 		return cardNew;
 	}
-
 }

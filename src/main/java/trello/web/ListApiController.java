@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import trello.domain.Board;
-import trello.domain.BoardRepository;
-import trello.domain.List;
-import trello.domain.ListRepository;
+import trello.domain.trello.Board;
+import trello.domain.trello.BoardRepository;
+import trello.domain.trello.List;
+import trello.domain.trello.ListRepository;
 
 @RestController
 @RequestMapping(value="/api/list")

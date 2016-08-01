@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import trello.domain.Card;
-import trello.domain.CardRepository;
-import trello.domain.Comment;
-import trello.domain.CommentRepository;
+import trello.domain.trello.Card;
+import trello.domain.trello.CardRepository;
+import trello.domain.trello.Comment;
+import trello.domain.trello.CommentRepository;
 
 @RestController
 @RequestMapping(value="/api/comment")

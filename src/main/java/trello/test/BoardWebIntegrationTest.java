@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-import trello.domain.Board;
-import trello.domain.BoardRepository;
+import trello.domain.trello.Board;
+import trello.domain.trello.BoardRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BoardWebIntegrationTest extends WebIntegrationTest{

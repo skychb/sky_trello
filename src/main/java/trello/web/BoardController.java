@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import trello.domain.Board;
-import trello.domain.BoardRepository;
+import trello.domain.trello.Board;
+import trello.domain.trello.BoardRepository;
 
 //controller, RestController의 차이를 알아야지 ㅠ 앞에거는 html, 뒤에거는 json을 받아오잖
 @RestController
