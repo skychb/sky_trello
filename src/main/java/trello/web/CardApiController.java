@@ -24,7 +24,7 @@ public class CardApiController {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+	@RequestMapping(value="/", method=RequestMethod.POST)
 	public Card createCard(String cardName, String description, long listId){
 		List list = listRepository.findOne(listId);
 		Card cardNew = new Card(cardName, description, list);

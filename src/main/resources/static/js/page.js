@@ -17,33 +17,7 @@ var TODO = (function(window) {
 			+ "</div>" + "</div>" + "</div>"
 
 	var list_template = Handlebars.compile(list_html);
-	//
-	// var URL = "http://localhost:8080";
-	// var boardId1 = $(".project_id").text();
-	// function getList() {
-	// 	$.get(URL + "/api/list?boardId=" + boardId1).done(
-	// 			function(data, status) {
-	// 				console.log(data);
-	// 				$.each(data, function(index, value) {
-	// 					var str = list_template({
-	// 						"input-value" : value.listName
-	// 					});
-	// 					$(".list_sortable").prepend(str);
-	// 					console.log(value.listName);
-	// 				})
-	// 			});
-	// }
-	// ;
-	// var listName1 = $("#add_list").text();
-	// function postList() {
-	// 	$.post(URL + "/api/list?boardId="+boardId1, {
-	// 		"listName" : listName1,
-	// 		"boardId" : boardId1
-	// 	}).done(function() {
-	// 		console.log("post completed");
-	// 	});
-	// }
-	// ;
+	
 
 	var card_html = "<div class='list_card'>"
 			+ "<div class='list_card_detail'>"
@@ -89,6 +63,7 @@ var TODO = (function(window) {
 		$(".close_button").on("click", close_modal);
 		$(".shadow_body").on("click", close_modal);
 		$('.modal-trigger').leanModal();
+		$('.save').on("click", add_list);
 	}
 
 	function close_modal() {
@@ -236,13 +211,21 @@ var TODO = (function(window) {
 	}
 
 	function add_list() {
-
+		var href = window.location.href;
 		var list_name = $("#add_list").val();
-		var str = list_html.replace(/\{\{input-value\}\}/gi, list_name);
-		$(".add_list").before(str);
-		$("#add_list").val("");
-		$(".add_list_form").css('display', 'none');
-		$(".btn-floating").css('display', 'block');
+		$.ajax({
+			type: "POST",
+			contentType: "application/json",
+			url: href+"/api/addList",
+			data: list_name,
+			success: function(result){
+				var str = list_html.replace(/\{\{input-value\}\}/gi, list_name);
+				$(".add_list").before(str);
+				$("#add_list").val("");
+				$(".add_list_form").css('display', 'none');
+				$(".btn-floating").css('display', 'block');
+			}
+		});
 	}
 
 	return {
