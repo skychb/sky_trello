@@ -9,9 +9,9 @@
 </head>
 
 <body>
-	<div id="header" class="z-depth-1">JWP-Trello</div>
-
-	<div id="my_board">My Boards</div>
+	<div id="header" class="z-depth-1">JWP-Trello<span th:text="${#authentication.name}"></span></div>
+	
+	<div id="my_board">My Board</div>
 	<ul id="boards_list">
 		<ul th:each="boards:${board}">
 			<!-- th:href li태그 내에선 안되는거 해결해야 함. -->

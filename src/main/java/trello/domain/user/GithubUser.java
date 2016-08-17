@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import lombok.Data;
 
 @Entity
+@Data
 @DiscriminatorValue(value = UserType.Values.GITHUB)
 public class GithubUser extends User{
 	private String name;

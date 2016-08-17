@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.Data;
 
+
 @Entity
+@Data
 @DiscriminatorValue(value = UserType.Values.TRELLO)
 public class TrelloUser extends User{
 	private String password;
@@ -28,6 +30,7 @@ public class TrelloUser extends User{
 	}
 	
 	public void encodePassword(PasswordEncoder passwordEncoder) {
+		System.out.println("raw="+rawPassword);
 		this.password = passwordEncoder.encode(rawPassword);
 	}
 }

@@ -31,11 +31,13 @@ public class CustomUserDetailService implements UserDetailsService {
 		java.util.List<GrantedAuthority> authorities = buildUserAuthority();
 		return buildUserForAuthentication(user, authorities);
 	}
+	// 권한 내용을 정의하고 이를 적용하는 파트.
 	
 	private User buildUserForAuthentication(TrelloUser user, java.util.List<GrantedAuthority> authorities) {
 		return new User(user.getUserId(), user.getPassword(),
 				true, true, true, true, authorities);
 	}
+		
 	
 	private java.util.List<GrantedAuthority> buildUserAuthority() {
 		java.util.List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(0);

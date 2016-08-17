@@ -29,7 +29,7 @@ var TODO = (function (window){
 		      type: "POST",
 //		      contentType을 입력하지 않으면 415 에러가 뜸. (Unsupported Media Type) MIME을 중시..
 		      contentType: "application/json",
-		      url: '/project',
+		      url: '/api/board/addBoard',
 		      data: data,
 		      success: function(result){
     		  	var html = "<a href='/project/" + result.id + "'>" + result.boardName + "</>";

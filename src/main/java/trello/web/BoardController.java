@@ -23,7 +23,7 @@ public class BoardController {
 		Board saved = boardRepository.save(board);
 		return new ResponseEntity<Board>(saved, HttpStatus.CREATED);
 	}
-//	
+	
 //	@RequestMapping(method=RequestMethod.DELETE)
 //	public String delete(Board board){
 //		boardRepository.delete(board);
