@@ -28,6 +28,11 @@ public class CustomUserDetailService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		TrelloUser user = userRepository.findByUserId(username);
+		LOGGER.debug("loaded user : {}", user);
+		if (user == null) {
+			throw new UsernameNotFoundException("");
+		}
+		
 		java.util.List<GrantedAuthority> authorities = buildUserAuthority();
 		return buildUserForAuthentication(user, authorities);
 	}

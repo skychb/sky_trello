@@ -12,9 +12,9 @@ import com.google.common.collect.Maps;
 @RestController
 public class ApiController {
 	@RequestMapping("/info")
-	public Map<String, Object> info(HttpServletRequest req){
+	public Map<String, Object> info(HttpServletRequest request){
 		Map<String, Object> infos = Maps.newHashMap();
-		infos.put("port", req.getServerPort());
+		infos.put("port", request.getServerPort());
 		return infos;
 	}
 }
