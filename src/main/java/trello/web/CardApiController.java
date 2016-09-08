@@ -12,7 +12,6 @@ import trello.domain.trello.List;
 import trello.domain.trello.ListRepository;
 
 @RestController
-@RequestMapping("/api/card")
 public class CardApiController {
 	
 	@Autowired
@@ -24,8 +23,9 @@ public class CardApiController {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@RequestMapping(value="/", method=RequestMethod.POST)
+	@RequestMapping(value="/api/card", method=RequestMethod.POST)
 	public Card createCard(String cardName, String description, long listId){
+		System.out.println(listId);
 		List list = listRepository.findOne(listId);
 		Card cardNew = new Card(cardName, description, list);
 		cardRepository.save(cardNew);

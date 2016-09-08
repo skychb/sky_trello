@@ -2,7 +2,7 @@ var TODO = (function(window) {
 
 	'use strict';
 
-	var list_html = "<div class='list_wrapper'>"
+	var list_html = "<div class='list_wrapper' data-id='{{data}}'>"
 			+ "<div class='list_content z-depth-1'>"
 			+ "<div class='list_header'>"
 			+ "<textarea class='list_header_name'>{{input-value}}</textarea>"
@@ -19,7 +19,7 @@ var TODO = (function(window) {
 	var list_template = Handlebars.compile(list_html);
 	
 
-	var card_html = "<div class='list_card'>"
+	var card_html = "<div class='list_card' data-id='{{data}}>"
 			+ "<div class='list_card_detail'>"
 			+ "<a class='list_card_title modal-trigger modalLink' dir='auto' href='#modalLayer' >{{value}}</a>"
 			+ "</div>" + "</div>";
@@ -195,19 +195,42 @@ var TODO = (function(window) {
 	}
 	function card_save(e) {
 
-		$(".add_card_form").css('display', 'none');
-		var card_text = $(e.target).parent(".add_card_form").find(
-				".list_card_composer_textarea").val();
+		$(".show_add_card_form_form").css('display', 'none');
+		var card_Name = $(e.target).parent(".add_card_form").find(".list_card_composer_textarea").val();
 		var $list_wrapper = $(e.target).closest(".list_wrapper");
-		var str = card_template({
-			"value" : card_text
-		});
-		$list_wrapper.find(".list_cards").append(str);
-		$(e.target).parent(".add_card_form").find(
-				".list_card_composer_textarea").val("");
-		$(e.target).parents(".card_composer").find("a.add_card").css('display',
-				'block');
+		var boardId = $(".boardId").val();
+		var deckId = $(e.target).closest(".list_wrapper").data("id");
+		console.log($(e.target));
+		var data = {};
+		data.cardName = card_Name;
+		data.listId = deckId;
 
+		if (card_Name === "") {
+			return;
+		}
+
+		if (card_Name !== null) {
+
+			$.ajax({
+				"url" :  "/api/card",
+				"type" : "POST",
+				"data" : data
+			}).done(function(data) {
+				console.log("newCard success")
+				console.log(data);
+
+				var card_template = Handlebars.compile(card_html);
+				var str = card_template({"value":card_Name, "data":data.cardId});
+
+				$list_wrapper.find(".list_cards").last().append(str);
+				$(e.target).parent(".show_add_card_form_form").find(".list_card_composer_textarea").val("");
+				$(e.target).parents(".card_composer").find("a.show_add_card_form").css('display', 'block');
+
+			}).fail(function(status) {
+				console.log("newDeck fail " + status);
+
+			});
+		}
 	}
 
 	function add_list() {
@@ -219,8 +242,10 @@ var TODO = (function(window) {
 			url: href+"/api/addList",
 			data: list_name,
 			success: function(result){
-				var str = list_html.replace(/\{\{input-value\}\}/gi, list_name);
-				$(".add_list").before(str);
+				var template = Handlebars.compile(list_html);
+				var str = {"input-value":list_name, "data":data.listId};
+				var html = template(str);
+				$(".add_list").before(html);
 				$("#add_list").val("");
 				$(".add_list_form").css('display', 'none');
 				$(".btn-floating").css('display', 'block');
